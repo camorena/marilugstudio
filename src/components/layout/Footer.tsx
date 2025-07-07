@@ -126,18 +126,8 @@ const Footer: React.FC = () => {
             </h4>
             <div className="space-y-2 text-sm font-light text-gray-600 dark:text-gray-300">
               <div className="flex justify-between">
-                <span>{t({ en: 'Mon - Fri', es: 'Lun - Vie' })}</span>
-                <span className="text-purple-600 dark:text-purple-400">9:00 - 19:00</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{t({ en: 'Saturday', es: 'Sábado' })}</span>
-                <span className="text-purple-600 dark:text-purple-400">9:00 - 18:00</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{t({ en: 'Sunday', es: 'Domingo' })}</span>
-                <span className="text-gray-400 dark:text-gray-500">
-                  {t({ en: 'Closed', es: 'Cerrado' })}
-                </span>
+                <span>{t({ en: 'Mon - Sun', es: 'Lun - Dom' })}</span>
+                <span className="text-purple-600 dark:text-purple-400">10:00 - 18:00</span>
               </div>
             </div>
           </div>

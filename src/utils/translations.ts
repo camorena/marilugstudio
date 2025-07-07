@@ -108,8 +108,7 @@ export const translations = {
         hours: 'Hours',
         bookAppointment: 'Book your appointment',
         schedule: {
-          weekdays: 'Monday - Saturday: 9:00 AM - 7:00 PM',
-          sunday: 'Sunday: Closed',
+          weekdays: 'Monday - Sunday: 10:00 AM - 6:00 PM',
         },
       },
     },
@@ -237,8 +236,7 @@ export const translations = {
         hours: 'Horario',
         bookAppointment: 'Reserva tu cita',
         schedule: {
-          weekdays: 'Lunes - Sábado: 9:00 AM - 7:00 PM',
-          sunday: 'Domingo: Cerrado',
+          weekdays: 'Lunes - Domingo: 10:00 AM - 6:00 PM',
         },
       },
     },

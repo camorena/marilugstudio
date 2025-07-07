@@ -97,10 +97,10 @@ const Contact: React.FC = () => {
                       {t({ en: 'Call or Text', es: 'Llama o Envía Mensaje' })}
                     </h4>
                     <a
-                      href="tel:7632093716"
+                      href="tel:6123084781"
                       className="text-2xl font-light text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
                     >
-                      763.209.3716
+                      612.308.4781
                     </a>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {t({
@@ -148,27 +148,14 @@ const Contact: React.FC = () => {
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span className="text-gray-600 dark:text-gray-400">
-                          {t({ en: 'Monday - Friday', es: 'Lunes - Viernes' })}
+                          {t({ en: 'Every Day', es: 'Todos los Días' })}
                         </span>
                         <span className="font-medium text-gray-900 dark:text-white">
                           10:00 AM - 6:00 PM
                         </span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-400">
-                          {t({ en: 'Saturday', es: 'Sábado' })}
-                        </span>
-                        <span className="font-medium text-gray-900 dark:text-white">
-                          10:00 AM - 6:00 PM
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-400">
-                          {t({ en: 'Sunday', es: 'Domingo' })}
-                        </span>
-                        <span className="font-medium text-gray-900 dark:text-white">
-                          10:00 AM - 6:00 PM
-                        </span>
+                      <div className="text-xs text-purple-600 dark:text-purple-400 mt-2">
+                        {t({ en: 'Open 7 Days a Week!', es: '¡Abierto los 7 Días de la Semana!' })}
                       </div>
                     </div>
                   </div>
