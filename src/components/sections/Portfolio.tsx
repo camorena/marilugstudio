@@ -107,11 +107,6 @@ const Portfolio: React.FC = () => {
             className={`overflow-x-auto overflow-y-hidden scrollbar-hide ${
               isDragging ? 'cursor-grabbing' : 'cursor-grab'
             }`}
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              WebkitScrollbar: { display: 'none' },
-            }}
           >
             <div className="flex gap-4 pb-4">
               {filteredItems.map((item, index) => (

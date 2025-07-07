@@ -452,16 +452,6 @@ img {
 .animate-fadeIn {
   animation: fadeIn 0.6s ease-out forwards;
 }
-/* Hide scrollbar for all browsers */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
 /* Smooth animations */
 @keyframes fadeIn {
   from {

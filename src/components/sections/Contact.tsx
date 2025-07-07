@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { translations } from '../../utils/translations';
-import emailjs from '@emailjs/browser';
+//import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
