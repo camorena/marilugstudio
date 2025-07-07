@@ -1,0 +1,12 @@
+LOGO SETUP INSTRUCTIONS:
+
+Please add your logo files to the public folder:
+1. logo-light.png - Logo for light mode (dark text/image)
+2. logo-dark.png - Logo for dark mode (light text/image)
+
+Recommended specifications:
+- Height: 40-60px
+- Format: PNG with transparent background
+- Place files directly in the /public folder
+
+The logos will automatically switch based on the theme.

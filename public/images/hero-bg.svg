@@ -1,0 +1,15 @@
+
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8D1EC3;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#EC47A0;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-gradient)"/>
+  <rect width="800" height="600" fill="#000000" opacity="0.3"/>
+  <text x="50%" y="50%" text-anchor="middle" dy=".3em" 
+        font-family="Inter, Arial" font-size="48" font-weight="300" fill="#FFFFFF">
+    Marilu G Studio
+  </text>
+</svg>

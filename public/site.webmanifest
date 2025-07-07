@@ -1,0 +1,21 @@
+{
+  "name": "Marilu G Studio",
+  "short_name": "Marilu G",
+  "description": "Premier Hair Salon & Barbershop in Inver Grove Heights, MN",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#8D1EC3",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
