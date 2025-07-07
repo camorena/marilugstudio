@@ -97,10 +97,10 @@ const Contact: React.FC = () => {
                       {t({ en: 'Call or Text', es: 'Llama o Envía Mensaje' })}
                     </h4>
                     <a
-                      href="tel:6123084781"
+                      href="tel:7632093716"
                       className="text-2xl font-light text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
                     >
-                      612.308.4781
+                      763.209.3716
                     </a>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {t({
@@ -151,7 +151,7 @@ const Contact: React.FC = () => {
                           {t({ en: 'Monday - Friday', es: 'Lunes - Viernes' })}
                         </span>
                         <span className="font-medium text-gray-900 dark:text-white">
-                          9:00 AM - 7:00 PM
+                          10:00 AM - 6:00 PM
                         </span>
                       </div>
                       <div className="flex justify-between">
@@ -159,15 +159,15 @@ const Contact: React.FC = () => {
                           {t({ en: 'Saturday', es: 'Sábado' })}
                         </span>
                         <span className="font-medium text-gray-900 dark:text-white">
-                          9:00 AM - 6:00 PM
+                          10:00 AM - 6:00 PM
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600 dark:text-gray-400">
                           {t({ en: 'Sunday', es: 'Domingo' })}
                         </span>
-                        <span className="text-gray-500 dark:text-gray-500">
-                          {t({ en: 'Closed', es: 'Cerrado' })}
+                        <span className="font-medium text-gray-900 dark:text-white">
+                          10:00 AM - 6:00 PM
                         </span>
                       </div>
                     </div>

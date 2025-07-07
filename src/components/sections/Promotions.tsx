@@ -221,7 +221,7 @@ const Promotions: React.FC = () => {
                       className={`mt-4 transition-all duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
                     >
                       <a
-                        href="tel:6123084781"
+                        href="tel:7632093716"
                         className={`text-sm ${classes.text} font-light hover:underline underline-offset-4`}
                       >
                         {t({
@@ -241,7 +241,7 @@ const Promotions: React.FC = () => {
         {/* Simple CTA */}
         <div className="text-center mt-16">
           <a
-            href="tel:6123084781"
+            href="tel:7632093716"
             className="inline-flex items-center gap-2 text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 group"
           >
             <Gift className="w-4 h-4" />

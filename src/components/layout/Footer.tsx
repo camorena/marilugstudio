@@ -73,11 +73,11 @@ const Footer: React.FC = () => {
               {t({ en: 'CONTACT', es: 'CONTACTO' })}
             </h4>
             <div className="space-y-4">
-              <a href="tel:6123084781" className="flex items-start space-x-3 group cursor-pointer">
+              <a href="tel:7632093716" className="flex items-start space-x-3 group cursor-pointer">
                 <Phone className="w-4 h-4 text-gray-400 mt-0.5 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors" />
                 <div>
                   <p className="text-sm font-light text-gray-600 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                    612.308.4781
+                    763.209.3716
                   </p>
                 </div>
               </a>
