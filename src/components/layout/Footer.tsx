@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Facebook, Instagram, Mail, Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Facebook, Instagram, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { translations } from '../../utils/translations';
@@ -8,26 +8,7 @@ const Footer: React.FC = () => {
   const { t } = useLanguage();
   const { theme } = useTheme();
   const [logoError, setLogoError] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
-  // Check if currently open
-  useEffect(() => {
-    const checkIfOpen = () => {
-      const now = new Date();
-      const currentHour = now.getHours();
-      const currentDay = now.getDay(); // 0 = Sunday, 6 = Saturday
-
-      // Open from 10 AM to 6 PM (10:00 - 18:00) every day
-      setIsOpen(currentHour >= 10 && currentHour < 18);
-    };
-
-    checkIfOpen();
-    // Update every minute
-    const interval = setInterval(checkIfOpen, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Use logos from the logos folder
   const logoSrc =
     theme === 'light' ? '/images/logos/logo-light.png' : '/images/logos/logo-dark.png';
 
@@ -35,6 +16,7 @@ const Footer: React.FC = () => {
     <footer className="py-20 bg-gray-50 dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 transition-colors duration-500">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
+          {/* Logo and Social Section */}
           <div className="md:col-span-1">
             <div className="mb-6">
               {!logoError ? (
@@ -85,6 +67,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
+          {/* Contact Section */}
           <div className="md:col-span-1">
             <h4 className="font-light text-sm tracking-wider mb-6 text-gray-900 dark:text-white flex items-center">
               <Phone className="w-4 h-4 mr-2 text-purple-600 dark:text-purple-400" />
@@ -113,6 +96,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
+          {/* Location Section */}
           <div className="md:col-span-1">
             <h4 className="font-light text-sm tracking-wider mb-6 text-gray-900 dark:text-white flex items-center">
               <MapPin className="w-4 h-4 mr-2 text-purple-600 dark:text-purple-400" />
@@ -137,32 +121,31 @@ const Footer: React.FC = () => {
             </a>
           </div>
 
+          {/* Hours Section */}
           <div className="md:col-span-1">
             <h4 className="font-light text-sm tracking-wider mb-6 text-gray-900 dark:text-white flex items-center">
               <Clock className="w-4 h-4 mr-2 text-purple-600 dark:text-purple-400" />
               {t({ en: 'HOURS', es: 'HORARIO' })}
             </h4>
-            {/* Enhanced Hours Section */}{' '}
-            <div className="flex items-start space-x-4">
-              <div className="flex-1">
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">
-                      {t({ en: 'Every Day', es: 'Todos los Días' })}
-                    </span>
-                    <span className="font-medium text-gray-600 dark:text-white">
-                      10:00 AM - 6:00 PM
-                    </span>
-                  </div>
-                  <div className="text-xs text-purple-600 dark:text-purple-400 mt-2">
-                    {t({ en: 'Open 7 Days a Week!', es: '¡Abierto los 7 Días de la Semana!' })}
-                  </div>
+            <div className="space-y-4">
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600 dark:text-gray-400">
+                    {t({ en: 'Every Day', es: 'Todos los Días' })}
+                  </span>
+                  <span className="font-medium text-gray-900 dark:text-white">
+                    10:00 AM - 6:00 PM
+                  </span>
+                </div>
+                <div className="text-xs text-purple-600 dark:text-purple-400 mt-2">
+                  {t({ en: 'Open 7 Days a Week!', es: '¡Abierto los 7 Días de la Semana!' })}
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Bottom Section */}
         <div className="border-t border-gray-200 dark:border-slate-800 pt-8">
           <div className="text-center">
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
@@ -172,12 +155,12 @@ const Footer: React.FC = () => {
             <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
               {t({ en: 'Website by ', es: 'Sitio web por ' })}
               <a
-                href="https://"
+                href="https://datelica.com"
                 className="text-purple-600 dark:text-purple-400 hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Datelica{' '}
+                Datelica
               </a>
             </p>
           </div>
