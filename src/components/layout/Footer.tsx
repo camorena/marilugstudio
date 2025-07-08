@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Facebook, Instagram, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Facebook, Instagram, Mail, Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { translations } from '../../utils/translations';
@@ -8,6 +8,24 @@ const Footer: React.FC = () => {
   const { t } = useLanguage();
   const { theme } = useTheme();
   const [logoError, setLogoError] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Check if currently open
+  useEffect(() => {
+    const checkIfOpen = () => {
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentDay = now.getDay(); // 0 = Sunday, 6 = Saturday
+
+      // Open from 10 AM to 6 PM (10:00 - 18:00) every day
+      setIsOpen(currentHour >= 10 && currentHour < 18);
+    };
+
+    checkIfOpen();
+    // Update every minute
+    const interval = setInterval(checkIfOpen, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Use logos from the logos folder
   const logoSrc =
@@ -124,10 +142,22 @@ const Footer: React.FC = () => {
               <Clock className="w-4 h-4 mr-2 text-purple-600 dark:text-purple-400" />
               {t({ en: 'HOURS', es: 'HORARIO' })}
             </h4>
-            <div className="space-y-2 text-sm font-light text-gray-600 dark:text-gray-300">
-              <div className="flex justify-between">
-                <span>{t({ en: 'Mon - Sun', es: 'Lun - Dom' })}</span>
-                <span className="text-purple-600 dark:text-purple-400">10:00 - 18:00</span>
+            {/* Enhanced Hours Section */}{' '}
+            <div className="flex items-start space-x-4">
+              <div className="flex-1">
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600 dark:text-gray-400">
+                      {t({ en: 'Every Day', es: 'Todos los Días' })}
+                    </span>
+                    <span className="font-medium text-gray-600 dark:text-white">
+                      10:00 AM - 6:00 PM
+                    </span>
+                  </div>
+                  <div className="text-xs text-purple-600 dark:text-purple-400 mt-2">
+                    {t({ en: 'Open 7 Days a Week!', es: '¡Abierto los 7 Días de la Semana!' })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

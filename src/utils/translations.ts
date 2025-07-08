@@ -35,7 +35,7 @@ export const translations = {
         premium: {
           title: 'Premium',
           subtitle: 'Experience',
-          description: 'Where luxury meets personalized care',
+          description: 'Where style meets personalized care',
         },
       },
       founder: 'Founder',
@@ -162,7 +162,7 @@ export const translations = {
         premium: {
           title: 'Premium',
           subtitle: 'Experiencia',
-          description: 'Donde el lujo se encuentra con el cuidado personalizado',
+          description: 'Donde estilo y cuidado personalizado se unen',
         },
       },
       founder: 'Fundadora',

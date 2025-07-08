@@ -100,7 +100,7 @@ const Contact: React.FC = () => {
                       href="tel:6123084781"
                       className="text-2xl font-light text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
                     >
-                      612.308.4781
+                      763.209.3716
                     </a>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {t({
