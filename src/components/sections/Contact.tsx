@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Send,
   CheckCircle,
@@ -11,10 +11,24 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { translations } from '../../utils/translations';
-//import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
+
+// Direct approach - for a production app, replace these with your actual values
+
+const WEBSITE_URL = 'https://marilugstudio.com';
+const EMAILJS_SERVICE_ID = 'service_gdkw67w';
+const EMAILJS_TEMPLATE_ID = 'template_g7f65if';
+const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_twotg1i';
+const EMAILJS_PUBLIC_KEY = 'Avx2uoYkywtkS7-d-';
+
+// Check if EmailJS credentials are available
+if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+  console.warn('EmailJS credentials are missing. Contact form will not function correctly.');
+}
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,17 +36,75 @@ const Contact: React.FC = () => {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
+    setErrorMessage('');
 
-    // EmailJS integration would go here
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', phone: '', message: '' });
+    try {
+      if (!formRef.current) {
+        throw new Error('Form reference is not available');
+      }
+
+      // Check if credentials are available
+      if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+        throw new Error('EmailJS credentials are not configured');
+      }
+
+      // Send the email using EmailJS
+      const result = await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      // Send auto-reply email if template ID is available
+      if (EMAILJS_AUTOREPLY_TEMPLATE_ID) {
+        try {
+          // Create template parameters for auto-reply
+          const templateParams = {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || 'Not provided',
+            message: formData.message,
+            websiteUrl: WEBSITE_URL,
+          };
+
+          // Send auto-reply email to the customer
+          await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_AUTOREPLY_TEMPLATE_ID,
+            templateParams,
+            EMAILJS_PUBLIC_KEY
+          );
+        } catch (autoReplyError) {
+          console.error('Error sending auto-reply email:', autoReplyError);
+          // Don't fail the whole process if auto-reply fails
+        }
+      }
+
+      if (result.status === 200) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+
+        // Reset form after 5 seconds
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setStatus('error');
+      setErrorMessage(
+        error instanceof Error ? error.message : 'An unexpected error occurred. Please try again.'
+      );
+
+      // Reset error state after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
-    }, 2000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -97,7 +169,7 @@ const Contact: React.FC = () => {
                       {t({ en: 'Call or Text', es: 'Llama o Envía Mensaje' })}
                     </h4>
                     <a
-                      href="tel:6123084781"
+                      href="tel:7632093716"
                       className="text-2xl font-light text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
                     >
                       763.209.3716
@@ -197,7 +269,10 @@ const Contact: React.FC = () => {
                 </h3>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                {/* Hidden field for website URL */}
+                <input type="hidden" name="websiteUrl" value={WEBSITE_URL} />
+
                 {/* Name Field */}
                 <div>
                   <label
@@ -325,7 +400,8 @@ const Contact: React.FC = () => {
                   <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl flex items-center gap-2 text-red-700 dark:text-red-400">
                     <AlertCircle className="w-5 h-5" />
                     <span className="font-light">
-                      {t({ en: translations.en.contact.error, es: translations.es.contact.error })}
+                      {errorMessage ||
+                        t({ en: translations.en.contact.error, es: translations.es.contact.error })}
                     </span>
                   </div>
                 )}
